@@ -33,20 +33,41 @@ targets:
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         DEVELOPMENT_ASSET_PATHS: "\"InkyTap/Preview Content\""
         ENABLE_PREVIEWS: YES
+    entitlements:
+      path: InkyTap/InkyTap.entitlements
+      properties:
+        com.apple.developer.nfc.readersession.formats: [TAG]
     info:
       path: InkyTap/Info.plist
       properties:
         CFBundleDisplayName: InkyTap
+        NFCReaderUsageDescription: InkyTap uses NFC to power and update your e-ink display.
+        com.apple.developer.nfc.readersession.iso7816.select-identifiers: [D2760000850101]
         UILaunchScreen: {}
         UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
         ITSAppUsesNonExemptEncryption: false
         UIApplicationSupportsIndirectInputEvents: true
+  InkyTapTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: InkyTapTests
+    dependencies:
+      - target: InkyTap
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.donny.inkytap.tests
+        GENERATE_INFOPLIST_FILE: YES
 schemes:
   InkyTap:
     build:
       targets:
         InkyTap: all
+        InkyTapTests: [test]
     run:
       config: Debug
+    test:
+      targets:
+        - InkyTapTests
     archive:
       config: Release
