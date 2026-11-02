@@ -77,6 +77,6 @@ Dead ends, for the record: a 600×400 panel, a single 4-bpp image of 121600 byte
 - Swift implementation, MIT: https://github.com/niw/EPaperNFCSwift
 - Python implementation + device table: https://github.com/alt-core/nfc-eink
 - Python driver for the 4-color badge, includes driver-flow notes: https://github.com/CompassSecurity/nfcink
-- Official FM1280 manual (older, covers 1-bit/3-color screens only): https://www.good-display.com/companyfile/1835.html
+- Official FM1280 manual "FMSC ESL User Development Manual" (older, covers 1-bit/3-color screens only), download from Good Display: https://www.good-display.com/companyfile/1835.html (not redistributed here; it is their copyrighted document)
 - Tapmora product page: https://tapmora.net/products/battery-free-e-ink-photo-magnet
 - Panel datasheet: https://www.eink.com/product/detail/EL040EF1
