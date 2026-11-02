@@ -1,0 +1,52 @@
+name: InkyTap
+options:
+  bundleIdPrefix: io.github.donny
+  deploymentTarget:
+    iOS: "26.0"
+  xcodeVersion: "27.2"
+  createIntermediateGroups: true
+  generateEmptyDirectories: true
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    DEVELOPMENT_TEAM: YOURTEAMID
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_STRICT_CONCURRENCY: complete
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+targets:
+  InkyTap:
+    type: application
+    platform: iOS
+    sources:
+      - path: InkyTap
+        excludes:
+          - "Preview Content"
+      - path: InkyTap/Preview Content
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.donny.inkytap
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        TARGETED_DEVICE_FAMILY: "1"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        DEVELOPMENT_ASSET_PATHS: "\"InkyTap/Preview Content\""
+        ENABLE_PREVIEWS: YES
+    info:
+      path: InkyTap/Info.plist
+      properties:
+        CFBundleDisplayName: InkyTap
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        ITSAppUsesNonExemptEncryption: false
+        UIApplicationSupportsIndirectInputEvents: true
+schemes:
+  InkyTap:
+    build:
+      targets:
+        InkyTap: all
+    run:
+      config: Debug
+    archive:
+      config: Release
