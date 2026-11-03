@@ -1,12 +1,18 @@
 # InkyTap
 
-An account-free iOS app for sending photos to battery-free NFC e-paper
-displays, such as the Tapmora 4-inch Spectra 6 photo magnet and other displays
-built on Good Display's FM1280 NFC module. Hold the phone to the display,
-and the image is uploaded and refreshed over NFC. No sign-up, no server.
+A developer playground for talking to battery-free NFC e-paper displays
+from an iPhone, such as the Tapmora 4-inch Spectra 6 photo magnet and other
+displays built on Good Display's FM1280 NFC module. Hold the phone to the
+display, and the image is uploaded and refreshed over NFC. No sign-up, no
+server.
 
-Built with SwiftUI for iOS 26+. The protocol is documented in
-[`docs/nfc-protocol-notes.md`](docs/nfc-protocol-notes.md).
+This repo is the lab version: it keeps the device probe, test patterns, and
+raw layout toggles alongside the photo sender so the protocol can be explored
+and verified on real hardware. The protocol findings live in
+[`docs/nfc-protocol-notes.md`](docs/nfc-protocol-notes.md). A polished
+App Store app is developed separately.
+
+Built with SwiftUI for iOS 26+.
 
 ## Building
 
@@ -21,8 +27,21 @@ make device    # build + install + launch on a USB-connected iPhone
 make open      # open in Xcode
 ```
 
-Core NFC only works on a physical iPhone. Set your own team and bundle ID in
-`project.yml` before deploying.
+Core NFC only works on a physical iPhone. For device builds, copy
+`Signing.xcconfig.example` to `Signing.xcconfig` and set your Apple team ID;
+the file is gitignored. Xcode registers the bundle ID
+`io.github.donny.inkytap` under your team automatically, or change
+`bundleIdPrefix` in `project.yml` to use your own.
+
+## What's inside
+
+- **Send Photo**: pick a photo, adjust saturation/contrast/brightness, dither to
+  the six-color palette, and send it.
+- **Device Probe**: reads the display's configuration records over NFC and
+  shows the decoded values; copy the report when adding support for a new
+  display.
+- **Test Pattern**: color bars and solid fills with layout toggles for
+  working out a panel's framebuffer format.
 
 ## Status
 

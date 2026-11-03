@@ -16,3 +16,6 @@ Package.resolved
 
 # macOS
 .DS_Store
+
+# Local signing (team ID); see Signing.xcconfig.example
+Signing.xcconfig

@@ -1,0 +1,4 @@
+// Copy this file to Signing.xcconfig (gitignored) and fill in your Apple
+// Developer team ID (Xcode > Settings > Accounts, or developer.apple.com).
+// Device builds need it; simulator builds do not.
+DEVELOPMENT_TEAM = YOURTEAMID
