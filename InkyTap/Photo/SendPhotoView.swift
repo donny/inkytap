@@ -11,6 +11,11 @@ struct SendPhotoView: View {
     @State private var isSending = false
     @State private var status: String?
 
+    /// Pass a photo to start with it already loaded (used for previews and screenshots).
+    init(initialPhotoData: Data? = nil) {
+        _photoData = State(initialValue: initialPhotoData)
+    }
+
     var body: some View {
         List {
             Section {
@@ -33,8 +38,9 @@ struct SendPhotoView: View {
                     .frame(maxHeight: 420)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
 
+                    let hasPhoto = photoData != nil
                     PhotosPicker(selection: $pickerItem, matching: .images) {
-                        Label(photoData == nil ? "Choose photo" : "Choose another photo", systemImage: "photo.on.rectangle")
+                        Label(hasPhoto ? "Choose another photo" : "Choose photo", systemImage: "photo.on.rectangle")
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.bordered)
@@ -75,6 +81,11 @@ struct SendPhotoView: View {
             }
         }
         .navigationTitle("Send Photo")
+        .task {
+            if photoData != nil, preview == nil {
+                await reprocess()
+            }
+        }
         .onChange(of: pickerItem) { _, item in
             Task { await load(item) }
         }

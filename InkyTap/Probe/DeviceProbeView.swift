@@ -11,6 +11,11 @@ struct DeviceProbeView: View {
     @State private var phase: Phase = .idle
     @State private var copied = false
 
+    /// Pass a result to show it without scanning (used for previews and screenshots).
+    init(initialResult: DeviceProbeResult? = nil) {
+        _phase = State(initialValue: initialResult.map(Phase.done) ?? .idle)
+    }
+
     var body: some View {
         List {
             Section {

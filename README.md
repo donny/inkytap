@@ -14,6 +14,10 @@ App Store app is developed separately.
 
 Built with SwiftUI for iOS 26+.
 
+| Home | Send Photo | Device Probe | Test Pattern |
+|:---:|:---:|:---:|:---:|
+| ![Home screen](docs/screenshots/home.png) | ![Send Photo with a dithered preview](docs/screenshots/send-photo.png) | ![Device Probe showing the decoded config](docs/screenshots/device-probe.png) | ![Test Pattern with color bars](docs/screenshots/test-pattern.png) |
+
 ## Building
 
 The Xcode project is generated from `project.yml` with
@@ -42,6 +46,10 @@ the file is gitignored. Xcode registers the bundle ID
   display.
 - **Test Pattern**: color bars and solid fills with layout toggles for
   working out a panel's framebuffer format.
+
+Screenshots are produced by `scripts/screenshots.sh`, which launches the
+simulator build with the debug-only `INKYTAP_SCREEN` environment variable to
+open each screen with sample data.
 
 ## Status
 
